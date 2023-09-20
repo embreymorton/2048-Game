@@ -15,7 +15,7 @@ pygame.display.set_caption("2048")
 
 header_font = pygame.font.Font(ttf_path, 150)
 header_text = header_font.render('2048', True, BLACK, COLOR_EMPTY)
-header_rect = header_text.get_rect(center=(500, 100), size=(200,200))
+header_rect = header_text.get_rect(center=(500, 100), size=(200, 200))
 
 game_over_font = pygame.font.Font(ttf_path, 100)
 game_over_text = game_over_font.render('GAME OVER', True, BLACK, COLOR_EMPTY)
@@ -313,3 +313,4 @@ while run:
 
 pygame.quit()
 
+test = 'test'
