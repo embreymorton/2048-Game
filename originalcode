@@ -1,5 +1,5 @@
-import os
 import random
+<<<<<<<< HEAD:originalcode
 import sys
 import pygame
 from tile import *
@@ -78,6 +78,9 @@ def update_score_board():
     global score_board_rect
     score_board_text = score_board_font.render('{}'.format(score_counter), True, BLACK, COLOR_2)
     score_board_rect = score_board_text.get_rect(center=(850, 100), size=(100, 100))
+========
+from tile import get_tile
+>>>>>>>> 59c93641d23c38fcd783997fb032a8384e5bb45e:src/game_logic.py
 
 
 def shift_tiles(tiles, direction):
@@ -153,30 +156,42 @@ def shift_tiles(tiles, direction):
         insert_tile(grid)
 
 
-def draw_tiles(tiles):
-    font = pygame.font.Font(ttf_path, 48)
+def generate_grid():
+    x1 = random.randint(0, 3)
+    y1 = random.randint(0, 3)
+    x2 = random.randint(0, 3)
+    y2 = random.randint(0, 3)
 
-    x_spacer = 225
-    y_spacer = 225
-    for tile_list in tiles:
-        for tile in tile_list:
-            text = font.render('{}'.format(tile.value) if tile.value != 0 else '', True, tile.text_color)
-            tile_bg = pygame.Rect(x_spacer, y_spacer, 125, 125)
-            pygame.draw.rect(screen, tile.bg_color, tile_bg)
-            current_tile = text.get_rect(center=(x_spacer + 62.5, y_spacer + 57.5), size=(125, 125))
-            screen.blit(text, current_tile)
-            x_spacer += 150
-        x_spacer = 225
-        y_spacer += 150
+    while x1 == x2 and y1 == y2:
+        x2 = random.randint(0, 3)
+        y2 = random.randint(0, 3)
+
+    generated_grid = []
+    for i in range(4):
+        row = []
+        for j in range(4):
+            if (j == x1 and i == y1) or (j == x2 and i == y2):
+                row.append(get_tile(random.choices([2, 4], [0.8, 0.2])[0]))
+            else:
+                row.append(get_tile(0))
+        generated_grid.append(row)
+
+    return generated_grid
 
 
-def empty_tile_counter(tiles):
-    count = 0
-    for row in tiles:
-        for tile in row:
-            if tile.value == 0:
-                count += 1
-    return count
+grid = generate_grid()
+score_counter = 0
+
+
+def get_score():
+    return score_counter
+
+
+def reset_grid():
+    global grid
+    global score_counter
+    grid = generate_grid()
+    score_counter = 0
 
 
 last_insert_x = None
@@ -201,11 +216,16 @@ def insert_tile(tiles):
         insert_tile(tiles)
 
 
+def get_grid():
+    return grid
+
+
 def print_grid(tiles):
     for row in tiles:
         for tile in row:
-            print(f"{tile.value:4}", end=" ")  # Adjust the width as needed
-        print()  # Move to the next row
+            print(f"{tile.value:4}", end=" ")
+        print()
+    print()
 
 
 def full_grid(tiles):
@@ -216,7 +236,15 @@ def full_grid(tiles):
     return True
 
 
-# needs work
+def empty_tile_counter(tiles):
+    count = 0
+    for row in tiles:
+        for tile in row:
+            if tile.value == 0:
+                count += 1
+    return count
+
+
 def check_loss(tiles):
     if not full_grid(tiles):
         return False
@@ -242,6 +270,7 @@ def check_win(tiles):
         return True
     else:
         return False
+<<<<<<<< HEAD:originalcode
 
 
 key_pressed = False
@@ -374,3 +403,5 @@ def get_tile(value):
             return Tile(2048, COLOR_2048, WHITE)
         case _:
             return Tile(0, COLOR_EMPTY, WHITE)
+========
+>>>>>>>> 59c93641d23c38fcd783997fb032a8384e5bb45e:src/game_logic.py
