@@ -1,3 +1,6 @@
+from constants import *
+
+
 class Tile:
 
     def __init__(self, value, bg_color, text_color, merged=False):
@@ -5,24 +8,6 @@ class Tile:
         self.bg_color = bg_color
         self.text_color = text_color
         self.merged = merged
-
-
-BACKGROUND_COLOR = (187, 173, 159)
-COLOR_EMPTY = (203, 193, 178)
-COLOR_2 = (238, 227, 217)
-COLOR_4 = (237, 224, 200)
-COLOR_8 = (242, 177, 121)
-COLOR_16 = (245, 149, 99)
-COLOR_32 = (246, 124, 95)
-COLOR_64 = (246, 94, 59)
-COLOR_128 = (237, 207, 114)
-COLOR_256 = (237, 204, 97)
-COLOR_512 = (237, 200, 80)
-COLOR_1024 = (237, 197, 63)
-COLOR_2048 = (237, 194, 46)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREY = (192, 192, 192)
 
 
 def get_tile(value):
@@ -53,4 +38,3 @@ def get_tile(value):
             return Tile(2048, COLOR_2048, WHITE)
         case _:
             return Tile(0, COLOR_EMPTY, WHITE)
-
