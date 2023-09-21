@@ -31,6 +31,16 @@ reset_button_bg = pygame.Rect(40, 75, 175, 50)
 
 
 def draw_tiles(tiles):
+    """
+    Displays the game board on the screen.
+
+    Args:
+        tiles (list of lists): The 2D grid representing the game board.
+
+    Returns:
+        None:
+
+    """
     font = pygame.font.Font(ttf_path, 48)
 
     x_spacer = 225
@@ -48,6 +58,15 @@ def draw_tiles(tiles):
 
 
 def update_score_board(score):
+    """
+    Updates the game's score on the score board display.
+
+    Args:
+        score (int): The current game score.
+
+    Returns:
+        tuple: A tuple containing the updated score board text and its rectangle.
+    """
     global score_board_text
     global score_board_rect
     score_board_text = score_board_font.render('{}'.format(score), True, BLACK, COLOR_2)

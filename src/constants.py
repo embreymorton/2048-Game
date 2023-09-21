@@ -1,6 +1,7 @@
 import os
 import sys
 
+# Colors
 BACKGROUND_COLOR = (187, 173, 159)
 COLOR_EMPTY = (203, 193, 178)
 COLOR_2 = (238, 227, 217)
@@ -18,7 +19,9 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREY = (192, 192, 192)
 
+# Dimensions of game screen
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 1000
 
+# Path to font used
 ttf_path = os.path.join(sys.path[0], '../assets/Montserrat-Bold.ttf')

@@ -2,6 +2,15 @@ from constants import *
 
 
 class Tile:
+    """
+    Represents a tile on the game board.
+
+    Attributes:
+        value (int): The value displayed on the tile.
+        bg_color (tuple): The background color of the tile.
+        text_color (tuple): The text color of the tile.
+        merged (bool): A flag indicating whether the tile has been merged with another tile.
+    """
 
     def __init__(self, value, bg_color, text_color, merged=False):
         self.value = value
@@ -11,6 +20,15 @@ class Tile:
 
 
 def get_tile(value):
+    """
+    Create and return a Tile object based on the given value.
+
+    Args:
+        value (int): The value to assign to the Tile.
+
+    Returns:
+        Tile: A Tile object with the specified value and appropriate colors.
+    """
     match value:
         case 0:
             return Tile(0, COLOR_EMPTY, WHITE)
