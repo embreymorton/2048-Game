@@ -2,7 +2,7 @@ from game_logic import get_grid, shift_tiles, check_win, check_loss, reset_grid,
 from display import *
 
 key_pressed = False
-run = True
+run = False
 while run:
     # Get the current game grid
     grid = get_grid()
